@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "Monaco example",
+  "description": "",
+  "version": "0.0.1",
+
+  "icons": {
+    "48": "icon.png"
+  },
+
+  "background":{
+    "service_worker":"background.js"
+  },
+
+  "web_accessible_resources": [
+    {
+      "resources": ["/monaco-editor/*"],
+      "matches": ["<all_urls>"],
+      "extension_ids": []
+    }
+  ],
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": [
+        "monaco-editor/min/vs/loader.js",
+        "content.js"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+
+  "permissions": [
+    "scripting", "contextMenus"
+  ],
+
+  "host_permissions": [
+    "<all_urls>"
+  ]
+}
